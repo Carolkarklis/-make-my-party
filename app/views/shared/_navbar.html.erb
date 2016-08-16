@@ -6,7 +6,6 @@
   <% end %>
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
-
       <!-- Profile picture and dropdown -->
       <div class="navbar-mmp-item">
         <div class="dropdown">
@@ -40,11 +39,6 @@
           </ul>
         </div>
       </div>
-
-
-
-
-
     <% else %>
       <div class="navbar-button-log">
         <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
@@ -56,11 +50,5 @@
         <%= link_to t(".sign_in", default: "Register"), new_user_session_path %>
       </div>
     <% end %>
-
-    <!-- Button (call-to-action) -->
-
-
-
-
 </div>
 </nav>
