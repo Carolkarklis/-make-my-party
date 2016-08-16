@@ -1,0 +1,32 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h1><%= @item.product_name %></h1>
+
+      <% if @item.picture? %>
+            <%= image_tag @item.picture.url %>
+      <% else %>
+            <div>
+             <p> Sem foto <span class="glyphicon glyphicon-question-sign"></span></p>
+            </div>
+      <% end %>
+
+      <% @item.reviews.each do |review| %>
+        <p>
+          <%= "#{review.description}"%>
+        </p>
+      <% end %>
+      <button> <%= link_to 'RESERVE', new_item_rent_path(@item)  %> </button>
+
+      <button> <%= link_to 'AVALIE', new_item_review_path(@item)  %> </button>
+
+      <button> <%= link_to 'BACK', items_path  %> </button>
+
+      <button> <%= link_to 'EDIT', edit_item_path(@item)  %> </button>
+
+      <button> <%= link_to 'DELETE', delete_item_path(@item),  method: :delete %> </button>
+    </div>
+  </div>
+</div>
