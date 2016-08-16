@@ -1,8 +1,13 @@
-
-
-<% @items.each do |item| %>
-  <%= link_to item.id, item_path(item) %>
-  <h2><%= item.product_name %></h2>
-  <h3><%= item.description %></h3>
-<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-lg-4" id="all-card">
+        <div class="card-item">
+          <%= image_tag item.picture, class: "index-photo"%>
+          <h2><%= item.product_name %></h2>
+          <p><%= item.description %></p>
+        </div>
+      </div>
+    <% end %>
 <button> <%= link_to 'NEW', new_item_path  %> </button>
+</div>
