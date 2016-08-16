@@ -1,16 +1,16 @@
-<h2>Log in</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+<div class="form-mmp">
+  <h2>Log in</h2>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-mmp-field">
+      <%= f.input :email, required: false, autofocus: true %>
+    </div>
+    <div class="form-mmp-field">
+      <%= f.input :password, required: false %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
+  <button class="form-button" type="submit">Log In</button>
 <% end %>
-
-<%= render "devise/shared/links" %>
+  <div class="text-center">
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
