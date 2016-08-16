@@ -6,6 +6,11 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @rent = Rent.new
+    @rent.item = @item
+    @rent.user = current_user
+    @rents = @item.rents.where(user: current_user)
+
   end
 
   def search(product_name)
@@ -14,10 +19,12 @@ class ItemsController < ApplicationController
 
   def new
       @item = Item.new
+      @item.user = current_user
     end
 
   def create
     @item = Item.new(item_params)
+    @item.user = current_user
     if @item.save(item_params)
       redirect_to item_path (@item)
     else

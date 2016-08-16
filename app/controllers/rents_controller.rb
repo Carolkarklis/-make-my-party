@@ -11,7 +11,7 @@ class RentsController < ApplicationController
     @rent = @item.rents.build(rent_params)
     @rent.user = current_user
     if @rent.save
-      redirect_to item_path (@item)
+      redirect_to item_path(@item), notice: 'Item Reservado'
     else
       render :new
     end
