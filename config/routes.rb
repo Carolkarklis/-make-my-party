@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [ :index, :show, :new, :create ] do
     resources :rents, only: [:new, :create, :destroy]
+    resources :reviews, only: [:new, :create, :destroy]
   end
 
   delete '/items/:id', to: "items#destroy", as: 'delete_item'

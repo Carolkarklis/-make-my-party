@@ -1,0 +1,21 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+
+      <%= simple_form_for [@item, @review] do |f| %>
+      <%= f.input :description %>
+      <%= f.button :submit, 'Create', class: 'btn-primary' %>
+      <% end %>
+
+      <!-- <h1>Nova reserva</h1>
+      <h2>Data de inicio</h2>
+      <input type="date">
+      <h2>Data de devolução</h2>
+      <input type="date"> -->
+
+
+      <%= link_to 'Back', items_path %>
+    </div>
+  </div>
+</div>
