@@ -1,9 +1,22 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+
+  resources :items, only: [ :index, :show, :new, :create ] do
+    resources :rents, only: [:new, :create, :destroy]
+  end
+
+  delete '/items/:id', to: "items#destroy", as: 'delete_item'
+  get '/items/:id/edit', to: "items#edit", as: 'edit_item'
+  patch '/items/:id', to: "items#update"
+
+  # delete '/doses/:id', to: "doses#destroy", as: 'delete_dose'
+
+  root to: "items#index"
 
 
-  root to: "home#index"
+
+  # root to: 'pages#home'
+  # root to: "home#index"
 
   resources :items
 end

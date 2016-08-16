@@ -1,0 +1,15 @@
+
+
+<%= simple_form_for(@item) do |t| %>
+  <%= t.label :product_name %>
+  <%= t.text_field :product_name %>
+  <%= t.label :description %>
+  <%= t.text_field :description %>
+  <%= t.label :price %>
+  <%= t.text_field :price %>
+  <%= t.label :category %>
+  <%= t.text_field :category %>
+  <%= t.input :picture %>
+  <%= t.input :picture_cache, as: :hidden %>
+  <%= t.submit %>
+<% end %>
