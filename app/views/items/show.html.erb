@@ -1,6 +1,7 @@
 
 
 <div class="container">
+
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <h1><%= @item.product_name %></h1>
@@ -12,21 +13,57 @@
              <p> Sem foto <span class="glyphicon glyphicon-question-sign"></span></p>
             </div>
       <% end %>
+    </div>
+  </div>
 
-      <% @item.reviews.each do |review| %>
-        <p>
-          <%= "#{review.description}"%>
-        </p>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <%= simple_form_for [@item, @rent] do |f| %>
+      <p>
+      <%= f.input :initial_date, as: :string, required: false,
+    :placeholder => 'Select date', input_html: {class: "form-control datepicker"},
+    label: "Data de inicio: " %>
+      <%= f.input :end_date, as: :string, required: false,
+    :placeholder => 'Select date', input_html: {class: "form-control datepicker"},
+    label: "Data de devolução: " %>
+      <%= f.button :submit, 'Reserve agora!', class: 'btn-primary' %>
       <% end %>
-      <button> <%= link_to 'RESERVE', new_item_rent_path(@item)  %> </button>
 
-      <button> <%= link_to 'AVALIE', new_item_review_path(@item)  %> </button>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <% @item.reviews.each do |review| %>
+        <p> <%= "#{review.description}"%> </p>
+        <p type="bold"> <%= "#{review.user.email}"%> </p>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <button> <%= link_to 'AVALIE', new_item_review_path(@item)  %> </button>
 
       <button> <%= link_to 'BACK', items_path  %> </button>
 
       <button> <%= link_to 'EDIT', edit_item_path(@item)  %> </button>
 
       <button> <%= link_to 'DELETE', delete_item_path(@item),  method: :delete %> </button>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h3> Avaliações </h3>
+
+      <% @item.reviews.each do |review| %>
+        <p> <%= "#{review.description}"%> </p>
+        <p type="bold"> <%= "#{review.user.email}"%> </p>
+      <% end %>
     </div>
   </div>
+
 </div>
