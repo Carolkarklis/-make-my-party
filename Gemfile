@@ -21,6 +21,7 @@ gem 'autoprefixer-rails'
 gem 'faker'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'omniauth-facebook'
 
 source "https://rails-assets.org" do
   gem 'rails-assets-bootstrap-datepicker'
