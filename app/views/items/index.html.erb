@@ -13,7 +13,9 @@
               <h2 class=""><%= item.product_name %></h2>
               <p><%= item.price %> reais por dia</p>
               <div class="cta-container">
-                <a href="#" class="cta">Detalhes</a>
+                <%= link_to(item_path(item)) do %>
+                <button class="cta" style="background-color:  #22C9BE; width: 50%; color: white;">Detalhes</button>
+                <% end %>
               </div>
           </div>
           </div>
@@ -21,3 +23,4 @@
   </div>
 <button> <%= link_to 'NEW', new_item_path  %> </button>
 </div>
+
