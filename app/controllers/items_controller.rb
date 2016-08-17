@@ -1,7 +1,12 @@
 class ItemsController < ApplicationController
 
+  def mine
+    @items = current_user.items
+  end
+
   def index
     @items = Item.all
+    @items = @items.where(user: current_user) if params[:filter] == 'mine'
   end
 
   def show

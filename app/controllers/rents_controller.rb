@@ -1,6 +1,16 @@
 class RentsController < ApplicationController
   before_action :find_item, only: [ :new, :create ]
 
+  def mine
+    @rents = current_user.items
+  end
+
+  def index
+    @rents = Rent.all
+    @rents = @rents.where(user: current_user) if params[:filter] == 'mine'
+  end
+
+
   def new
     @rent = Rent.new
     @rent.item = @item
