@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
 
   resources :items, only: [ :index, :show, :new, :create ] do
     resources :rents, only: [:new, :create, :destroy, :index]
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   delete '/items/:id', to: "items#destroy", as: 'delete_item'
   get '/items/:id/edit', to: "items#edit", as: 'edit_item'
   patch '/items/:id', to: "items#update"
+
 
   # delete '/doses/:id', to: "doses#destroy", as: 'delete_dose'
 
