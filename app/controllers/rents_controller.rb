@@ -1,6 +1,10 @@
 class RentsController < ApplicationController
   before_action :find_item, only: [ :new, :create ]
 
+  def index
+    @rents = Rent.all
+  end
+
   def new
     @rent = Rent.new
     @rent.item = @item
@@ -11,7 +15,7 @@ class RentsController < ApplicationController
     @rent = @item.rents.build(rent_params)
     @rent.user = current_user
     if @rent.save
-      redirect_to item_path(@item), notice: 'Item Reservado'
+      redirect_to items_path, notice: 'Item Reservado'#mudar para My_rents
     else
       render :new
     end
@@ -20,7 +24,7 @@ class RentsController < ApplicationController
   private
 
   def rent_params
-    params.require(:rent).permit(:description, :item_id, :user_id, :end_date, :initial_date)
+    params.require(:rent).permit(:description, :item_id, :user_id, :end_date, :initial_date, :quantity)
   end
 
    def find_item
