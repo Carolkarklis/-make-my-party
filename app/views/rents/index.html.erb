@@ -1,0 +1,4 @@
+<h2> Meus items alugados</h2>
+<% @rents.each do |rent| %>
+<h4> <p><%= rent.item.product_name %> </p></h4>
+<% end %>

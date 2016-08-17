@@ -1,7 +1,12 @@
 class ItemsController < ApplicationController
 
+  def mine
+    @items = current_user.items
+  end
+
   def index
     @items = Item.all
+    @items = @items.where(user: current_user) if params[:filter] == 'mine'
   end
 
   def show
@@ -26,7 +31,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.user = current_user
     if @item.save(item_params)
-      redirect_to item_path (@item)
+      redirect_to items_path, notice: 'Item Criado!' #mudar para My_itens
     else
       render :new
     end
@@ -39,19 +44,19 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
-    redirect_to item_path (@item)
+    redirect_to items_path, notice: 'Item Atualizado!'#mudar para My_itens
   end
 
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to items_path
+    redirect_to items_path, notice: 'Item Apagado!'#mudar para My_itens
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:product_name, :description, :price, :category, :picture, :picture_cache)
+    params.require(:item).permit(:product_name, :description, :price, :category, :picture, :picture_cache, :quantity)
   end
 
   def find_item

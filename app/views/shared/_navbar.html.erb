@@ -13,22 +13,22 @@
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Perfil") %>
+                <i class="fa fa-user"></i> <%= t(".profile", default:  current_user.email ) %>
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-plus-circle"></i>  <%= t(".profile", default: "Adcionar item") %>
+              <%= link_to new_item_path do %>
+                <i class="fa fa-plus-circle"></i>  <%= t(".profile", default: "Adicionar item") %>
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
+              <%= link_to items_path(filter: 'mine') do %>
                 <i class="fa fa-diamond"></i>  <%= t(".profile", default: "Meus itens") %>
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-shopping-basket"></i>  <%= t(".profile", default: "Locações") %>
+              <%= link_to rents_path(filter: 'mine') do %>
+              <i class="fa fa-shopping-basket"></i>  <%= t(".profile", default: "Minhas Locações") %>
               <% end %>
             </li>
             <li>
