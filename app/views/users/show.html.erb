@@ -1,2 +1,32 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="profile-header-wrapper">
+  <div class="container profile-header-container text-center">
+    <div class="profile-header-infos">
+      <%= image_tag @user.picture %>
+      <h1> <%= @user.firstname %> <%= @user.lastname %></h1>
+    </div>
+    <div class="tabs">
+      <a class="tab active" data-target="#profile">
+        <h3>Perfil</h3>
+      </a>
+      <a class="tab" data-target="#myitems">
+        <h3>Meus itens locados</h3>
+      </a>
+      <a class="tab" data-target="#myrents">
+        <h3>Minhas locações</h3>
+      </a>
+    </div>
+  </div>
+</div>
+
+    <div class="container text-center">
+      <div class="tab-content" id="profile">
+        <p>This is my bio.</p>
+      </div>
+      <div class="tab-content hidden" id="myitems">
+        <p>Here are my projects.</p>
+      </div>
+      <div class="tab-content hidden" id="myrents">
+        <p>Contact me if you want.</p>
+      </div>
+    </div>
+
