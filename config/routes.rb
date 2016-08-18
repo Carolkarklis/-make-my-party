@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  get 'users/show'
 
+  get "pages/home"
+  root to: "pages#home"
+
+  get 'users/show'
   get 'users/edit'
 
   devise_for :users, :controllers => {  registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
@@ -18,14 +21,5 @@ Rails.application.routes.draw do
   patch '/items/:id', to: "items#update"
 
 
-  # delete '/doses/:id', to: "doses#destroy", as: 'delete_dose'
 
-  root to: "items#index"
-
-
-
-  # root to: 'pages#home'
-  # root to: "home#index"
-
-  resources :items
 end
