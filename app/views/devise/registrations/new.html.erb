@@ -17,6 +17,9 @@
         <%= f.input :address, required: true, autofocus: true %>
        </div>
        <div class="form-mmp-field">
+        <%= f.input :phone, required: true, autofocus: true %>
+       </div>
+       <div class="form-mmp-field">
         <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
         <%= f.input :password_confirmation, required: true %>
       </div>
