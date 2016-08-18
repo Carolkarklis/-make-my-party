@@ -1,0 +1,13 @@
+<%= form_tag(items_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Digite o que procura aqui" %>
+<%= submit_tag "Procurar" %>
+<% end %>
+
+<% if @items.present? %>
+  <p> seus itens</p>
+  <% else %>
+  <p> Pedimos desculpas, pois não temos <%= params[:search] %> no momento ... </p>
+<% end %>
+
+<button> <%= link_to 'VOLTAR', items_path  %> </button>
+<button> <%= link_to 'Nova pesquisa', item_search_index_path %> </button>
