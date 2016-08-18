@@ -5,6 +5,10 @@
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
       <div class="form-mmp-field">
+        <%= f.input :picture, label: "Adcione uma foto" %>
+        <%= f.input :picture_cache, as: :hidden %>
+      </div>
+      <div class="form-mmp-field">
         <%= f.input :email, required: true, autofocus: true %>
        </div>
        <div class="form-mmp-field">
