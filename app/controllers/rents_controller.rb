@@ -12,7 +12,6 @@ class RentsController < ApplicationController
 
   def new
     @rent = Rent.new
-    if
     @rent.item = @item
     @rent.user = current_user
   end
@@ -23,15 +22,15 @@ class RentsController < ApplicationController
     if @rent.save
       redirect_to rent_path(@rent)
     else
-      render :new
+      redirect_to item_path(@item), error: 'Erro ao reservar'
     end
   end
 
   def quantity_of_items
-    if new_rent? && @rent.quantity >= @rent.item.quantity
-        errors.add_to_base "Não é possível reservar mais do que #{@rent.item.quantity} itens."
-    end
+    @rent.quantity >= @rent.item.quantity
+    errors.add_to_base "Não é possível reservar mais do que #{@rent.item.quantity} itens."
   end
+
 
   def show
     @rent = Rent.find(params[:id])
@@ -40,16 +39,14 @@ class RentsController < ApplicationController
     @owner = @item.user
   end
 
-
   private
 
   def rent_params
     params.require(:rent).permit(:description, :item_id, :user_id, :end_date, :initial_date, :quantity)
   end
 
-   def find_item
+  def find_item
     @item = Item.find(params[:item_id])
-    end
+  end
 
 end
-

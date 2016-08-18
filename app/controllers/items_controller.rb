@@ -29,7 +29,18 @@ class ItemsController < ApplicationController
     @rent.item = @item
     @item_coordinates = { lat: @item.latitude, lng: @item.longitude }
     @rent.user = current_user
+
+
+    @events = []
+    @item.rents.each do |rent|
+      @events << {title: 'Reservado', start: rent.initial_date.strftime('%Y-%m-%d'), end: (rent.end_date + 1.day).strftime('%Y-%m-%d')}
+    end
+
+
     @rents = @item.rents.where(user: current_user)
+
+
+
   end
 
   def search(product_name)
