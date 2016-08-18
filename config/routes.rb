@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  get 'users/show'
+
+  get 'users/edit'
+
+  devise_for :users, :controllers => {  registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :items, only: [ :index, :show, :new, :create, :search ] do
     resources :rents, only: [:new, :create, :destroy, :index]
@@ -12,6 +16,7 @@ Rails.application.routes.draw do
   # delete '/items/:id', to: "items#destroy", as: 'delete_item'
   # get '/items/:id/edit', to: "items#edit", as: 'edit_item'
   # patch '/items/:id', to: "items#update"
+  resources :users, only: [:show, :edit, :update, :destroy]
 
   # match '/item_search/index', :to => 'item_search#index', as: 'item_search', via => 'GET'
 

@@ -1,52 +1,42 @@
-
-
-<div class="container">
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h1><%= @item.product_name %></h1>
-      <h2> Quantidade </h2>
-      <h2><%= @item.quantity %></h2>
-
-      <% if @item.picture? %>
-            <%= image_tag @item.picture.url, class: "swipebox" %>
-      <% else %>
-            <div>
-             <p> <span class="glyphicon glyphicon-question-sign"></span></p>
-            </div>
+<div class="container text-center">
+  <div class="well well-lg">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-lg-6">
+        <br>
+        <br>
+        <br>
+        <%= image_tag @item.picture.url, class: "swipebox show-photo" %>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-lg-6">
+        <div class="form-mmp">
+        <h2>Reserve agora!</h2>
+        <%= simple_form_for [@item, @rent] do |f| %>
+        <%= f.input :quantity, label: 'Quantidade' %>
+        <%= f.input :initial_date, as: :string, required: false,
+        :placeholder => 'Select date', input_html: {class: "form-control datepicker"},
+        label: "Data de inicio " %>
+        <%= f.input :end_date, as: :string, required: false,
+        :placeholder => 'Select date', input_html: {class: "form-control datepicker"},
+        label: "Data de devolução " %>
+        <button type="submit">RESERVAR</button>
       <% end %>
+      </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-lg-6">
+        <h1 class="product-name"><%= @item.product_name %></h1>
+        <div class="form-mmp-field">
+          <p>
+            <b>Informações sobre o item: <br></b><%= @item.description %>
+          </p>
+          <p> <b> Quantidade:</b> <br> <%= @item.quantity %> </p>
+          <p> <b> Categoria: </b> <br><%= @item.category %> </p>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div id="calendar"></div>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <%= simple_form_for [@item, @rent] do |f| %>
-      <p>
-      <%= f.input :quantity %>
-      <%= f.input :initial_date, as: :string, required: false,
-    :placeholder => 'Select date', input_html: {class: "form-control datepicker"},
-    label: "Data de inicio: " %>
-      <%= f.input :end_date, as: :string, required: false,
-    :placeholder => 'Select date', input_html: {class: "form-control datepicker"},
-    label: "Data de devolução: " %>
-      <%= f.button :submit, 'Reserve agora!', class: 'btn-primary' %>
-      <% end %>
-
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <% @item.reviews.each do |review| %>
-        <p> <%= "#{review.description}"%> </p>
-        <p type="bold"> <%= "#{review.user.email}"%> </p>
-      <% end %>
-    </div>
-  </div>
-
+  <div id="calendar" class="fullcalendar"></div>
 
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
@@ -54,21 +44,25 @@
 
       <button> <%= link_to 'BACK', items_path  %> </button>
 
-      <button> <%= link_to 'EDIT', edit_item_path(@item)  %> </button>
 
-      <button> <%= link_to 'DELETE', delete_item_path(@item),  method: :delete %> </button>
+
       </div>
   </div>
 
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h3> Avaliações </h3>
+    <div class="well">
+      <h3> Avaliações <i class="fa fa-commenting" aria-hidden="true"></i>
+ </h3>
 
-      <% @item.reviews.each do |review| %>
-        <p> <%= "#{review.description}"%> </p>
-        <p type="bold"> <%= "#{review.user.email}"%> </p>
-      <% end %>
+        <% @item.reviews.each do |review| %>
+          <hr>
+          <p> <b><%= "#{review.user.firstname}"%> </b></p>
+          <p> <%= "#{review.description}"%> </p>
+          <hr>
+        <% end %>
+      </div>
     </div>
   </div>
-
 </div>
+

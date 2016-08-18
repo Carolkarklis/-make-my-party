@@ -9,10 +9,14 @@
       <!-- Profile picture and dropdown -->
       <div class="navbar-mmp-item">
         <div class="dropdown">
-          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% if user_signed_in? && current_user.facebook_picture_url %>
+            <%= image_tag current_user.facebook_picture_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% else %>
+            <%= image_tag current_user.picture, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
+              <%= link_to users_show_path do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default:  current_user.email ) %>
               <% end %>
             </li>
@@ -43,12 +47,12 @@
     <% else %>
       <div class="navbar-button-log">
         <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
-        <%= link_to t(".top_call_to_action", default: "Login", id: 'login'), "#" %>
+        <%= link_to t(user_session_path, default: "Login", id: 'login'), user_session_path %>
       </div>
       <!-- Login text link -->
       <div class="navbar-button">
         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-        <%= link_to t(".sign_in", default: "Register"), new_user_session_path %>
+        <%= link_to t(new_user_session_path, default: "Register"), new_user_session_path %>
       </div>
     <% end %>
 </div>
