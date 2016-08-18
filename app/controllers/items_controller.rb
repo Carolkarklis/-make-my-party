@@ -15,7 +15,6 @@ class ItemsController < ApplicationController
     @rent.item = @item
     @rent.user = current_user
     @rents = @item.rents.where(user: current_user)
-
   end
 
   def search(product_name)

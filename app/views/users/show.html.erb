@@ -1,0 +1,89 @@
+
+<div class="profile-header-wrapper">
+  <div class="container profile-header-container text-center">
+    <div class="profile-header-infos">
+      <%= image_tag @user.picture %>
+      <h1> <%= @user.firstname %> <%= @user.lastname %></h1>
+    </div>
+    <div class="tabs">
+      <a class="tab active" data-target="#profile">
+        <h3>Perfil</h3>
+      </a>
+      <a class="tab" data-target="#myitems">
+        <h3>Meus itens</h3>
+      </a>
+      <a class="tab" data-target="#myrents">
+        <h3>Minhas locações</h3>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="white-background">
+    <div class="container text-center">
+      <div class="tab-content" id="profile">
+        <div class="form-mmp">
+          <%= link_to users_edit_path do %>
+          <button><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar perfil</button>
+        <% end %>
+          <h3> Nome: </h3>
+          <p> <%= @user.firstname %> <%= @user.lastname %></p>
+          <h3> Endereço: </h3>
+          <p> <%= @user.address %></p>
+          <h3> Email: </h3>
+          <p> <%= @user.email %></p>
+        </div>
+      </div>
+      <div class="tab-content hidden" id="myitems">
+        <div class="row">
+      <% @user.items.each do |item| %>
+        <div class="col-lg-4 col-md-4 col-xs-12">
+          <div class="card text-center">
+              <%= image_tag item.picture, class: "index-photo"%>
+              <h2 class=""><%= item.product_name %></h2>
+              <p><%= item.price %> reais por dia</p>
+              <div class="cta-container">
+                <%= link_to(item_path(item)) do %>
+                <button class="cta" style="background-color:  #22C9BE; width: 50%; color: white;">Detalhes</button>
+                <%= link_to delete_item_path(item), method: :delete do %>
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                <%end%>
+                <%= link_to edit_item_path(item) do %>
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                <% end %>
+                <% end %>
+              </div>
+          </div>
+          </div>
+      <% end %>
+  </div>
+      </div>
+      <div class="tab-content hidden" id="myrents">
+        <% @user.rents.each do |rent| %>
+        <div class="row">
+          <div class="media">
+            <div class="col-xs-12 col-md-6 col-lg-6">
+              <div class="media-body">
+                <div class="media-section">
+                  <h2> <%= rent.item.product_name %> </h2>
+                    <%= image_tag rent.item.picture %>
+                </div>
+                <div class="media-section">
+                  <h2>Description</h2>
+                  <%= rent.item.description %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-6 col-lg-6">
+            <div class="media-aside">
+              <div class="media-section">
+                <h2> + informações</h2>
+                ...
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+</div>
