@@ -21,17 +21,35 @@
 <div class="white-background">
     <div class="container text-center">
       <div class="tab-content" id="profile">
-        <div class="form-mmp">
-          <%= link_to users_edit_path do %>
-          <button><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar perfil</button>
-        <% end %>
-          <h3> Nome: </h3>
-          <p> <%= @user.firstname %> <%= @user.lastname %></p>
-          <h3> Endereço: </h3>
-          <p> <%= @user.address %></p>
-          <h3> Email: </h3>
-          <p> <%= @user.email %></p>
+        <div class="container text-center">
+          <div class="form-mmp">
+            <h2>Perfil</h2>
+            <%= simple_form_for(@user) do |t| %>
+            <div class="form-mmp-field">
+              <%= t.input :picture, label: "Adcione uma foto" %>
+              <%= t.input :picture_cache, as: :hidden %>
+            </div>
+            <div class="form-mmp-field">
+              <%= t.label 'Nome' %>
+              <%= t.text_field :firstname %>
+            </div>
+            <div class="form-mmp-field">
+              <%= t.label 'Sobrenome' %>
+              <%= t.text_field :lastname %>
+            </div>
+            <div class="form-mmp-field">
+              <%= t.label 'Email' %>
+              <%= t.text_field :email %>
+            </div>
+            <div class="form-mmp-field">
+              <%= t.label 'Endereço' %>
+              <%= t.text_field :address %>
+            </div>
+            <button>Salvar alterações</button>
+            <% end %>
+           </div>
         </div>
+
       </div>
       <div class="tab-content hidden" id="myitems">
         <div class="row">
