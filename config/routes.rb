@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   resources :rents, only: [:index, :show, :new, :create, :destroy, :search]
   resources :item_search
 
-  # delete '/items/:id', to: "items#destroy", as: 'delete_item'
-  # get '/items/:id/edit', to: "items#edit", as: 'edit_item'
-  # patch '/items/:id', to: "items#update"
+  delete '/items/:id', to: "items#destroy", as: 'delete_item'
+  get '/items/:id/edit', to: "items#edit", as: 'edit_item'
+  patch '/items/:id', to: "items#update"
   resources :users, only: [:show, :edit, :update, :destroy]
 
   # match '/item_search/index', :to => 'item_search#index', as: 'item_search', via => 'GET'
