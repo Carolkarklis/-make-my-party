@@ -5,7 +5,7 @@
         <br>
         <br>
         <br>
-        <%= image_tag @item.picture.url, class: "swipebox show-photo" %>
+        <%= image_tag @item.picture.url, class: "show-photo"%>
       </div>
       <div class="col-xs-12 col-sm-6 col-lg-6">
         <div class="form-mmp">
@@ -36,14 +36,17 @@
     </div>
   </div>
 
+  <div id="calendar" class="fullcalendar "></div>
+
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
     <button> <%= link_to 'AVALIE', new_item_review_path(@item)  %> </button>
 
       <button> <%= link_to 'BACK', items_path  %> </button>
 
+      <button> <%= link_to 'EDIT', edit_item_path(@item)  %> </button>
 
-
+      <button> <%= link_to 'DELETE', delete_item_path(@item),  method: :delete %> </button>
       </div>
   </div>
 
@@ -63,4 +66,17 @@
     </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $('#calendar').fullCalendar({
+        events: <%= raw @events.to_json %>
+      });
+    });
+
+  <% end %>
+<% end %>
+
+
 
