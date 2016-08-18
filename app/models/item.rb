@@ -5,5 +5,6 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :reviews
   has_many :rents
-  validates :picture, presence: true
+  validates :picture, :price, :product_name, presence: true
+
 end
