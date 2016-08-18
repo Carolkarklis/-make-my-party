@@ -1,0 +1,53 @@
+<div class="container text-center">
+  <div class="well well-lg">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-lg-6">
+        <br>
+        <br>
+        <br>
+        <%= image_tag @item.picture.url, class: "swipebox show-photo" %>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-lg-6">
+        <div class="form-mmp">
+        <h2>Item Reservado!</h2>
+          <div class="form-mmp-field">
+            <p>
+              <b>Agora entre em contato com: <br></b>
+            </p>
+            <p> <b> Nome:</b> <br> <%= @owner.firstname %> <%= @rent.item.user.lastname %></p>
+            <p> <b> Endereço: </b> <br><%= @owner.address %> </p>
+            <p> <b> Email: </b> <br><%= @owner.email %> </p>
+            <p> <b> Telefone: </b> <br><%= @owner.phone %> </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-lg-6">
+        <h1 class="product-name"><%= @item.product_name %></h1>
+        <div class="form-mmp-field">
+          <p>
+            <b>Informações sobre o item alugado: <br></b><%= @item.description %>
+          </p>
+          <p> <b> Quantidade:</b> <br> <%= @rent.quantity %> </p>
+          <p> <b> Valor a pagar: </b> <br><%= @rent.item.price * (@rent.end_date - @rent.initial_date) %> </p>
+          <p> <b> Data de início: </b> <br><%= @rent.initial_date %> </p>
+          <p> <b> Data de devolução: </b> <br><%= @rent.end_date %> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <button> <%= link_to 'AVALIE', new_item_review_path(@rent.item)  %> </button>
+
+      <button> <%= link_to 'BACK', items_path  %> </button>
+
+
+      </div>
+  </div>
+
+
+</div>
+

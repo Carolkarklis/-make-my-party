@@ -20,11 +20,19 @@ class RentsController < ApplicationController
     @rent = @item.rents.build(rent_params)
     @rent.user = current_user
     if @rent.save
-      redirect_to items_path, notice: 'Item Reservado'#mudar para My_rents
+      redirect_to rent_path(@rent)
     else
       render :new
     end
   end
+
+  def show
+    @rent = Rent.find(params[:id])
+    @user = @rent.user
+    @item = @rent.item
+    @owner = @item.user
+  end
+
 
   private
 
