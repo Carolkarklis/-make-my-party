@@ -1,17 +1,31 @@
 
-
-<%= simple_form_for(@item) do |t| %>
-  <%= t.label :product_name %>
-  <%= t.text_field :product_name %>
-  <%= t.label :description %>
-  <%= t.text_field :description %>
-  <%= t.label :price %>
-  <%= t.text_field :price %>
-  <%= t.label :category %>
-  <%= t.text_field :category %>
-  <%= t.label :quantity %>
-  <%= t.text_field :quantity %>
-  <%= t.input :picture %>
-  <%= t.input :picture_cache, as: :hidden %>
-  <%= t.submit %>
-<% end %>
+<div class="form-mmp text-center">
+  <h2>Editar item</h2>
+  <%= simple_form_for(@item) do |t| %>
+    <div class="form-mmp-field">
+      <%= t.label 'Nome do item' %>
+      <%= t.text_field :product_name %>
+    </div>
+    <div class="form-mmp-field">
+      <%= t.label 'Descrição' %>
+      <%= t.text_area :description %>
+    </div>
+    <div class="form-mmp-field">
+      <%= t.label 'Preço' %>
+      <%= t.text_field :price %>
+    </div>
+    <div class="form-mmp-field">
+      <%= t.label 'Categoria' %>
+      <%= t.text_field :category %>
+    </div>
+    <div class="form-mmp-field">
+      <%= t.label 'Quantidade' %>
+      <%= t.text_field :quantity %>
+    </div>
+    <div class="form-mmp-field">
+      <%= t.input :picture, label: 'Coloque uma foto' %>
+      <%= t.input :picture_cache, as: :hidden %>
+    </div>
+    <button>Salvar</button>
+  <% end %>
+</div>

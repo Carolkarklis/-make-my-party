@@ -21,7 +21,6 @@ class ItemsController < ApplicationController
     @item_coordinates = { lat: @item.latitude, lng: @item.longitude }
     @rent.user = current_user
     @rents = @item.rents.where(user: current_user)
-
   end
 
   def search(product_name)

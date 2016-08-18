@@ -1,0 +1,96 @@
+
+<div class="profile-header-wrapper">
+  <div class="container profile-header-container text-center">
+    <div class="profile-header-infos">
+      <%= image_tag @user.picture %>
+      <h1> <%= @user.firstname %> <%= @user.lastname %></h1>
+    </div>
+    <div class="tabs">
+      <a class="tab active" data-target="#profile">
+        <h3>Perfil</h3>
+      </a>
+      <a class="tab" data-target="#myitems">
+        <h3>Meus itens</h3>
+      </a>
+      <a class="tab" data-target="#myrents">
+        <h3>Minhas locações</h3>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="white-background">
+    <div class="container text-center">
+      <div class="tab-content" id="profile">
+        <div class="container text-center">
+          <div class="form-mmp">
+            <h2>Perfil</h2>
+            <%= simple_form_for(@user) do |t| %>
+            <div class="form-mmp-field">
+              <%= t.input :picture, label: "Adcione uma foto" %>
+              <%= t.input :picture_cache, as: :hidden %>
+            </div>
+            <div class="form-mmp-field">
+              <%= t.label 'Nome' %>
+              <%= t.text_field :firstname %>
+            </div>
+            <div class="form-mmp-field">
+              <%= t.label 'Sobrenome' %>
+              <%= t.text_field :lastname %>
+            </div>
+            <div class="form-mmp-field">
+              <%= t.label 'Email' %>
+              <%= t.text_field :email %>
+            </div>
+            <div class="form-mmp-field">
+              <%= t.label 'Endereço' %>
+              <%= t.text_field :address %>
+            </div>
+            <button>Salvar alterações</button>
+            <% end %>
+           </div>
+        </div>
+
+      </div>
+      <div class="tab-content hidden" id="myitems">
+        <div class="row">
+          <% @user.items.each do |item| %>
+            <div class="col-lg-4 col-md-4 col-xs-12">
+              <div class="card text-center">
+                  <%= image_tag item.picture, class: "index-photo"%>
+                  <h2 class=""><%= item.product_name %></h2>
+                  <p><%= item.price %> reais por dia</p>
+                  <div class="cta-container">
+                    <%= link_to(item_path(item)) do %>
+                      <button class="cta" style="background-color:  #22C9BE; width: 50%; color: white;">Detalhes</button>
+
+                    <%= link_to delete_item_path(item), method: :delete do %>
+                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    <%end%>
+                    <%= link_to edit_item_path(item) do %>
+                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <% end %>
+                    <% end %>
+                  </div>
+              </div>
+              </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="tab-content hidden" id="myrents">
+        <div class="row">
+          <% @user.rents.each do |rent| %>
+            <div class="col-lg-4 col-md-4 col-xs-12">
+              <div class="card text-center">
+                <%= image_tag rent.item.picture, class: "index-photo" %>
+                <h2> <%= rent.item.product_name %> </h2>
+                  <%= link_to(rent_path(rent)) do %>
+                    <button class="cta" style="background-color:  #22C9BE; width: 50%; color: white;">Ver mais</button>
+                    <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
