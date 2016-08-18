@@ -1,5 +1,8 @@
+.white-background {
+  background-color: white;
+}
 .tabs {
-  background: #53443F;
+  background: #CFF7F4;
   display: flex;
   padding: 10px 100px 0 100px;
 }
@@ -21,7 +24,7 @@
   margin-bottom: 0;
 }
 .tab {
-  background: #756A66;
+  background: #583F7F;
   flex: 1 1 auto;
   text-align: center;
   padding: 20px 0;
@@ -44,14 +47,14 @@
   font-weight: bold;
 }
 .profile-header-wrapper {
-  background: #53443F;
+  background: #CFF7F4;
 }
 .profile-header-container img {
   width: 100px;
   border-radius: 50%;
 }
 .profile-header-container h1 {
-  color: white;
+  color: black;
   font-size: 28px;
   font-weight: bold;
   letter-spacing: -1px;
@@ -66,4 +69,31 @@
 }
 .profile-header-infos {
   padding: 20px 0;
+}
+
+.media {
+  display: flex;
+}
+.media-body {
+  flex: 1 1 auto;
+  padding: 20px;
+}
+.media-body img {
+  width: 100%;
+}
+.media-aside {
+  flex: 0 0 400px;
+  padding: 30px;
+  align-self: stretch;
+  background: #F8F7F7;
+  border-left: 1px solid #f0efef;
+}
+.media-section {
+  margin: 40px auto;
+}
+.media-section:first-child {
+  margin-top: 0;
+}
+.media-section:last-child {
+  margin-bottom: 0;
 }
