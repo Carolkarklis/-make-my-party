@@ -5,6 +5,18 @@
   <h2> <%= @title %> </h2>
   <br>
   <br>
+  <%= form_tag(items_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Digite o item" %>
+    <%= submit_tag "Procurar" %>
+  <% end %>
+  <br>
+  <br>
+  <% if @items.present? %>
+  <p> </p>
+    <% else %>
+  <p>Item não encontrado: <%= params[:search] %>.</p>
+  <% end %>
+  <br>
   <div class="row">
       <% @items.each do |item| %>
         <div class="col-lg-4 col-md-4 col-xs-12">

@@ -6,7 +6,7 @@ class Item < ApplicationRecord
 
   def self.search(search)
     where("product_name ILIKE ?", "%#{search}%")
-    where("description ILIKE ?", "%#{search}%")
   end
 
 end
+

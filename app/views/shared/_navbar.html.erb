@@ -16,10 +16,6 @@
                 <i class="fa fa-user"></i> <%= t(".profile", default:  current_user.email ) %>
               <% end %>
             </li>
-            <li>
-              <%= link_to item_search_index_path do %>
-                <i class="fa fa-plus-circle"></i>  <%= t(".profile", default: "Pesquisar item") %>
-              <% end %>
             </li>
             <li>
               <%= link_to new_item_path do %>
