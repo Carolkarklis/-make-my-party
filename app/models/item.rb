@@ -4,4 +4,9 @@ class Item < ApplicationRecord
   has_many :reviews
   has_many :rents
 
+  def self.search(search)
+    where("product_name ILIKE ?", "%#{search}%")
+    where("description ILIKE ?", "%#{search}%")
+  end
+
 end

@@ -1,12 +1,20 @@
 class ItemsController < ApplicationController
 
-  def mine
-    @items = current_user.items
-  end
 
   def index
     @items = Item.all
-    @items = @items.where(user: current_user) if params[:filter] == 'mine'
+    @title = 'Todos os itens'
+
+
+    if params[:filter] == 'mine'
+      @items = @items.where(user: current_user)
+      @title = 'Meus Itens'
+    end
+
+    if params[:search]
+      @title = 'Pesquisa Itens'
+      @items = Item.search(params[:search]).order("created_at DESC")
+    end
   end
 
   def show
@@ -25,7 +33,10 @@ class ItemsController < ApplicationController
   def new
       @item = Item.new
       @item.user = current_user
-    end
+  end
+
+  def search
+  end
 
   def create
     @item = Item.new(item_params)
