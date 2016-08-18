@@ -12,7 +12,6 @@ class RentsController < ApplicationController
 
   def new
     @rent = Rent.new
-    if
     @rent.item = @item
     @rent.user = current_user
   end
