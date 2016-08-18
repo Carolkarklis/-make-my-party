@@ -22,10 +22,14 @@ gem 'faker'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'omniauth-facebook'
+gem 'geocoder'
+gem 'coffee-rails'
+gem 'gmaps4rails'
 
 source "https://rails-assets.org" do
   gem 'rails-assets-bootstrap-datepicker'
   gem 'rails-assets-swipebox', '1.4.1'
+  gem "rails-assets-underscore"
 end
 
 group :development, :test do

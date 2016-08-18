@@ -7,12 +7,18 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
     @items = @items.where(user: current_user) if params[:filter] == 'mine'
+
+    @hash = Gmaps4rails.build_markers(@items) do |item, marker|
+      marker.lat item.latitude
+      marker.lng item.longitude
+    end
   end
 
   def show
     @item = Item.find(params[:id])
     @rent = Rent.new
     @rent.item = @item
+    @item_coordinates = { lat: @item.latitude, lng: @item.longitude }
     @rent.user = current_user
     @rents = @item.rents.where(user: current_user)
 
@@ -23,9 +29,9 @@ class ItemsController < ApplicationController
   end
 
   def new
-      @item = Item.new
-      @item.user = current_user
-    end
+    @item = Item.new
+    @item.user = current_user
+  end
 
   def create
     @item = Item.new(item_params)
