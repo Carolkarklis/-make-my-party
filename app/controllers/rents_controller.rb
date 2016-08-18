@@ -12,6 +12,7 @@ class RentsController < ApplicationController
 
   def new
     @rent = Rent.new
+    if
     @rent.item = @item
     @rent.user = current_user
   end
@@ -23,6 +24,12 @@ class RentsController < ApplicationController
       redirect_to rent_path(@rent)
     else
       render :new
+    end
+  end
+
+  def quantity_of_items
+    if new_rent? && @rent.quantity >= @rent.item.quantity
+        errors.add_to_base "Não é possível reservar mais do que #{@rent.item.quantity} itens."
     end
   end
 

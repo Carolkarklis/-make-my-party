@@ -1,5 +1,4 @@
-
 $(document).ready(function() {
-  $('#calendar').fullCalendar({});
+  // $( '.swipebox' ).swipebox();
 });
 
