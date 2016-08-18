@@ -46,12 +46,12 @@
     <% else %>
       <div class="navbar-button-log">
         <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
-        <%= link_to t(".top_call_to_action", default: "Login", id: 'login'), "#" %>
+        <%= link_to t(user_session_path, default: "Login", id: 'login'), user_session_path %>
       </div>
       <!-- Login text link -->
       <div class="navbar-button">
         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-        <%= link_to t(".sign_in", default: "Register"), new_user_session_path %>
+        <%= link_to t(new_user_session_path, default: "Register"), new_user_session_path %>
       </div>
     <% end %>
 </div>
