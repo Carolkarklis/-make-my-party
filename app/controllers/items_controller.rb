@@ -29,6 +29,10 @@ class ItemsController < ApplicationController
     @rent.item = @item
     @item_coordinates = { lat: @item.latitude, lng: @item.longitude }
     @rent.user = current_user
+    @hash = Gmaps4rails.build_markers(@item) do |item, marker|
+      marker.lat item.latitude
+      marker.lng item.longitude
+    end
 
 
     @events = []
