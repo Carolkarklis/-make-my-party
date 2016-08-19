@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: '<contato@makemyapp.com.br>'
+  default from: '<contato@taxworks.com.br>'
   layout 'mailer'
 end
