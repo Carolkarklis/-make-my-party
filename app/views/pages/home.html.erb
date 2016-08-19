@@ -1,42 +1,113 @@
-
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('background.jpg');">
+<div class="banner">
+ <% image_path('background.jpg') %>
   <div class="banner-content">
-    <h1>Faça a sua Festa</h1>
-    <p>economize alugando os itens necessários</p>
-    <a class="btn btn-primary btn-lg">Conheça a <strong> Make my Party</strong></a>
+    <h1>Some Stuff</h1>
+    <p>Very cool stuff, useful and smart</p>
+    <a class="btn btn-primary btn-lg">GET IT</a>
   </div>
 </div>
+
+<div class="all-cards">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-xs-12">
+        <div class="card text-center">
+          <%= image_tag "http://1.bp.blogspot.com/-KrEq_Ii42vA/UJlZ_63oK6I/AAAAAAAAE1Y/HGsRlPvKGSI/s1600/vidro.jpg", class: "home-photo"%>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-xs-12">
+        <div class="card text-center">
+          <%= image_tag "http://hative.com/wp-content/uploads/2015/01/candle-ideas/3-cool-diy-candle-ideas-and-tutorials.jpg", class: "home-photo"%>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-xs-12">
+        <div class="card text-center">
+          <%= image_tag "http://partystock.ca/media/wysiwyg/black_pink_gold_party/katespadeparty-9.JPG", class: "home-photo"%>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-lg-4 col-md-4 col-xs-12">
+        <div class="card text-center">
+          <%= image_tag "http://partystock.ca/media/catalog/product/cache/1/image/700x/9df78eab33525d08d6e5fb8d27136e95/9/6/9608-i.jpg", class: "home-photo"%>
+        </div>
+      </div>
+    <div class="col-lg-4 col-md-4 col-xs-12">
+        <div class="card text-center">
+          <%= image_tag "http://partystock.ca/media/catalog/product/cache/1/image/700x/9df78eab33525d08d6e5fb8d27136e95/9/4/9499-i.jpg", class: "home-photo"%>
+        </div>
+      </div>
+    <div class="col-lg-4 col-md-4 col-xs-12">
+        <div class="card text-center">
+          <%= image_tag "http://partystock.ca/media/catalog/product/cache/1/image/700x/9df78eab33525d08d6e5fb8d27136e95/9/6/9603-i.jpg", class: "home-photo"%>
+        </div>
+      </div>
+    </div>
+</div>
+
+
 
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-4">
-      <!-- insert <div class="card"> -->
-      <h1> card 1</h1>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <!-- insert <div class="card"> -->
-      <h1> card 2 </h1>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <!-- insert <div class="card"> -->
-      <h1> card 3 </h1>
-    </div>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+     <!-- Indicators -->
+     <ol class="carousel-indicators">
+       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+       <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+       <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+     </ol>
+     <div class="carousel-inner" role="listbox">
 
-    <div class="col-xs-12 col-sm-4">
-      <!-- insert <div class="card"> -->
-      <h1> card 4</h1>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <!-- insert <div class="card"> -->
-      <h1> card 5 </h1>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-      <!-- insert <div class="card"> -->
-      <h1> card 6 </h1>
-    </div>
+       <div class="item active">
+         <%= image_tag "http://o.aolcdn.com/smp/is/submissions/uploads/156288/566efb1e21808$!x900.jpg" %>
+         <div class="container">
+           <div class="carousel-caption">
+             <h1 class="first-h1">Make my party</h1>
+             <p class="first-p"> <h2>Aqui você encontra os melhores itens pra sua festa.</h2></p>
+          <!--  <%= link_to new_user_session_path do %>
+              <button class="first-button">SIGN UP</button> -->
+            <% end %>
+           </div>
+         </div>
+       </div>
+       <div class="item">
+         <%= image_tag "http://o.aolcdn.com/smp/is/uploads/wordpress/submissions/uploads/lizz@studiostarling.com/18892/ss_ls_61$!x900.jpg", class: "first-slide" %>
 
-  </div>
+         <div class="container">
+           <div class="carousel-caption">
+             <h1> O estilo é por sua conta </h1>
+             <h2><p> temos items para todos os estilos </p></h2>
+            <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p> -->
+           </div>
+         </div>
+       </div>
+       <div class="item">
+         <%= image_tag "http://o.aolcdn.com/smp/is/uploads/wordpress/submissions/uploads/lizz@studiostarling.com/18892/ss_081311_33$!x900.jpg ", class: "first-slide", class: "first-slide" %>
+
+         <div class="container">
+           <div class="carousel-caption">
+             <h1> O tamanho da sua festa</h1>
+             <h2><p> você define </p></h2>
+      <!--  <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
+           </div>
+         </div>
+       </div>
+     </div>
+
+     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+       <span class="sr-only">Anterior</span>
+     </a>
+     <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+       <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+       <span class="sr-only">Próximo</span>
+     </a>
+   </div>
 </div>
+
+
+
+
+
 
 
 
