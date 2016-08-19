@@ -1,13 +1,61 @@
-<div class="banner">
- <% image_path('background.jpg') %>
-  <div class="banner-content">
-    <h1>Some Stuff</h1>
-    <p>Very cool stuff, useful and smart</p>
-    <a class="btn btn-primary btn-lg">GET IT</a>
-  </div>
+<div class="container">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+     <!-- Indicators -->
+     <ol class="carousel-indicators">
+       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+       <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+       <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+     </ol>
+     <div class="carousel-inner" role="listbox">
+
+       <div class="item active">
+         <%= image_tag "http://o.aolcdn.com/smp/is/submissions/uploads/156288/566efb1e21808$!x900.jpg" %>
+         <div class="container">
+           <div class="carousel-caption">
+             <h1 style="color: #583F7F; font-size: 80px;" class="h1-carousel"> Make my party</h1>
+             <p style="color:black; font-size: 30px;"> Aqui você encontra os melhores itens pra sua festa.</p>
+            <%= link_to new_user_session_path do %>
+              <button class="first-button">CADASTRE-SE</button>
+            <% end %>
+           </div>
+         </div>
+       </div>
+       <div class="item">
+         <%= image_tag "http://o.aolcdn.com/smp/is/uploads/wordpress/submissions/uploads/lizz@studiostarling.com/18892/ss_ls_61$!x900.jpg", class: "first-slide" %>
+         <div class="container">
+           <div class="carousel-caption">
+             <h1 style="color: #22C9BE; font-size: 80px;" class="h1-carousel">
+                O estilo é por sua conta
+              </h1>
+            <p style="color:white; font-size: 30px;">Temos itens para todos os estilos</p>
+           </div>
+         </div>
+       </div>
+       <div class="item">
+         <%= image_tag "http://o.aolcdn.com/smp/is/uploads/wordpress/submissions/uploads/lizz@studiostarling.com/18892/ss_081311_33$!x900.jpg ", class: "first-slide", class: "first-slide" %>
+
+         <div class="container">
+           <div class="carousel-caption">
+             <h1 style="color: #22C9BE; font-size: 80px;" class="h1-carousel"> O tamanho da sua festa</h1>
+             <p style="color:white; font-size: 30px;"> É você que define</p>
+           </div>
+         </div>
+       </div>
+     </div>
+
+     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+       <span class="sr-only">Anterior</span>
+     </a>
+     <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+       <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+       <span class="sr-only">Próximo</span>
+     </a>
+   </div>
 </div>
 
-<div class="all-cards">
+<div class="all-cards text-center">
+  <h1 class="h1-carousel">Alguns itens que você pode encontrar</h1>
   <div class="container">
     <div class="row">
       <div class="col-lg-4 col-md-4 col-xs-12">
@@ -47,62 +95,6 @@
 
 
 
-<div class="container">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-     <!-- Indicators -->
-     <ol class="carousel-indicators">
-       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-       <li data-target="#myCarousel" data-slide-to="1" class=""></li>
-       <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-     </ol>
-     <div class="carousel-inner" role="listbox">
-
-       <div class="item active">
-         <%= image_tag "http://o.aolcdn.com/smp/is/submissions/uploads/156288/566efb1e21808$!x900.jpg" %>
-         <div class="container">
-           <div class="carousel-caption">
-             <h1 class="first-h1">Make my party</h1>
-             <p class="first-p"> <h2>Aqui você encontra os melhores itens pra sua festa.</h2></p>
-          <!--  <%= link_to new_user_session_path do %>
-              <button class="first-button">SIGN UP</button> -->
-            <% end %>
-           </div>
-         </div>
-       </div>
-       <div class="item">
-         <%= image_tag "http://o.aolcdn.com/smp/is/uploads/wordpress/submissions/uploads/lizz@studiostarling.com/18892/ss_ls_61$!x900.jpg", class: "first-slide" %>
-
-         <div class="container">
-           <div class="carousel-caption">
-             <h1> O estilo é por sua conta </h1>
-             <h2><p> temos items para todos os estilos </p></h2>
-            <!-- <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p> -->
-           </div>
-         </div>
-       </div>
-       <div class="item">
-         <%= image_tag "http://o.aolcdn.com/smp/is/uploads/wordpress/submissions/uploads/lizz@studiostarling.com/18892/ss_081311_33$!x900.jpg ", class: "first-slide", class: "first-slide" %>
-
-         <div class="container">
-           <div class="carousel-caption">
-             <h1> O tamanho da sua festa</h1>
-             <h2><p> você define </p></h2>
-      <!--  <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
-           </div>
-         </div>
-       </div>
-     </div>
-
-     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-       <span class="sr-only">Anterior</span>
-     </a>
-     <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-       <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-       <span class="sr-only">Próximo</span>
-     </a>
-   </div>
-</div>
 
 
 
