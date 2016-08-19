@@ -15,7 +15,7 @@
         </div>
       <div class="col-xs-12 col-sm-6 col-lg-6">
         <div class="form-mmp">
-          <h2>Reserve agora!</h2>
+          <h2>Reserve agora! </h2>
           <%= simple_form_for [@item, @rent] do |f| %>
           <%= f.input :initial_date, as: :string, required: false,
           :placeholder => 'Select date', input_html: {class: "form-control datepicker"},
@@ -31,6 +31,9 @@
       <div class="col-xs-12 col-sm-6 col-lg-6">
         <h1 class="product-name"><%= @item.product_name %></h1>
         <div class="form-mmp-field">
+          <p>
+            <b>Preço (por dia): <br></b><%= @item.price %>
+          </p>
           <p>
             <b>Informações sobre o item: <br></b><%= @item.description %>
           </p>

@@ -94,10 +94,11 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:product_name, :description, :price, :category, :picture, :picture_cache)
+    params.require(:item).permit(:product_name, :description, :price, :category, :address, :picture, :picture_cache)
   end
 
   def find_item
     @item = Item.find(params[:item_id])
   end
+
 end
