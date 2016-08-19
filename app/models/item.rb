@@ -7,4 +7,9 @@ class Item < ApplicationRecord
   has_many :rents
   validates :picture, :price, :product_name, presence: true
 
+  def self.search(search)
+    where("product_name ILIKE ?", "%#{search}%")
+  end
+
 end
+

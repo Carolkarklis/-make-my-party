@@ -7,7 +7,7 @@ class RentsController < ApplicationController
 
   def index
     @rents = Rent.all
-    @rents = @rents.where(user: current_user) if params[:filter] == 'mine'
+    @rents = @rents.where(user: current_user) if params[:filter] == 'mine' # cria um filtro "mine"
   end
 
   def new

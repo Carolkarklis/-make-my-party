@@ -1,0 +1,8 @@
+<!--   <%= image_tag item.picture, class: "index-photo"%> -->
+<% @rents.each do |rent| %>
+<hr>
+<h4> <p>  Produto: <%= rent.item.product_name %> </p></h4>
+<h5> <p>  Descrição: <%= rent.item.description %> </p></h5>
+<h5> <p>  Valor da locação: <%= rent.item.price %> </p></h5>
+<h5> <p>  Período de locação: <%= rent.initial_date %> à <%= rent.end_date %></p></h5>
+<% end %>
