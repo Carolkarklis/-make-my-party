@@ -4,6 +4,11 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
     @title = 'Todos os itens'
+    if params[:location].present?
+      @items = Item.near(params[:location], params[:distance])
+    else
+      @items = Item.all.order('created_at DESC')
+    end
     if params[:filter] == 'mine'
       @items = @items.where(user: current_user)
       @title = 'Meus Itens'
@@ -34,17 +39,16 @@ class ItemsController < ApplicationController
       marker.lng item.longitude
     end
 
-
     @events = []
     @item.rents.each do |rent|
       @events << {title: 'Reservado', start: rent.initial_date.strftime('%Y-%m-%d'), end: (rent.end_date + 1.day).strftime('%Y-%m-%d')}
     end
 
-
     @rents = @item.rents.where(user: current_user)
+  end
 
-
-
+  def locate(location, distance)
+    @item = Item.near(address, radius)
   end
 
   def search(product_name)
