@@ -2,8 +2,32 @@
   <br>
   <br>
   <br>
-  <h2> Todos os produtos</h2>
+  <h2> <%= @title %> </h2>
   <br>
+  <br>
+  <%= form_tag(items_path, :method => "get", id: "search-form") do %>
+    <h3>Procurando alguma coisa?</h3>
+    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    <%= text_field_tag :search, params[:search], placeholder: "Digite o item" %>
+    <%= submit_tag "Procurar" %>
+  <% end %>
+  <br>
+  <%= form_tag items_path, method: :get do %>
+    <%= label :location, "Procure Items perto de: " %>
+    <%= text_field_tag :location, params[:location] %>
+
+    <%= label :distance, "Distância : " %>
+    <%= text_field_tag :distance, params[:distance] %>
+
+    <%= submit_tag "Search" %>
+  <% end %>
+  <br>
+  <br>
+  <% if @items.present? %>
+  <p> </p>
+    <% else %>
+  <p>Item não encontrado: <%= params[:search] %>.</p>
+  <% end %>
   <br>
   <div class="row">
       <% @items.each do |item| %>
@@ -21,13 +45,18 @@
           </div>
       <% end %>
   </div>
+  <br>
+  <br>
+<br>
+<br>
+<br>
 </div>
 
 <div id="map" style="width: 100%; height: 600px;"></div>
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
-    $(document).on('ready', function() {
+    $(function() {
       var handler = Gmaps.build('Google');
       handler.buildMap({ internal: { id: 'map' } }, function() {
         markers = handler.addMarkers(<%= raw @hash.to_json %>);

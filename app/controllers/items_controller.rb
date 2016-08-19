@@ -1,13 +1,27 @@
 class ItemsController < ApplicationController
 
-  def mine
-    @items = current_user.items
-  end
 
   def index
     @items = Item.all
+    @title = 'Todos os itens'
+    if params[:location].present?
+      @items = Item.near(params[:location], params[:distance])
+    else
+      @items = Item.all.order('created_at DESC')
+    end
+    if params[:filter] == 'mine'
+      @items = @items.where(user: current_user)
+      @title = 'Meus Itens'
+    end
+    if params[:search]
+      @title = 'Pesquisa Itens'
+      if params[:search]
+        @items = Item.search(params[:search]).order("created_at DESC")
+      else
+        @items = Item.all.order('created_at DESC')
+      end
+    end
     @items = @items.where(user: current_user) if params[:filter] == 'mine'
-
     @hash = Gmaps4rails.build_markers(@items) do |item, marker|
       marker.lat item.latitude
       marker.lng item.longitude
@@ -20,18 +34,21 @@ class ItemsController < ApplicationController
     @rent.item = @item
     @item_coordinates = { lat: @item.latitude, lng: @item.longitude }
     @rent.user = current_user
-
+    @hash = Gmaps4rails.build_markers(@item) do |item, marker|
+      marker.lat item.latitude
+      marker.lng item.longitude
+    end
 
     @events = []
     @item.rents.each do |rent|
       @events << {title: 'Reservado', start: rent.initial_date.strftime('%Y-%m-%d'), end: (rent.end_date + 1.day).strftime('%Y-%m-%d')}
     end
 
-
     @rents = @item.rents.where(user: current_user)
+  end
 
-
-
+  def locate(location, distance)
+    @item = Item.near(address, radius)
   end
 
   def search(product_name)
@@ -39,6 +56,11 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
+    @item.user = current_user
+  end
+
+  def search
     @item = Item.new
     @item.user = current_user
   end
@@ -78,5 +100,4 @@ class ItemsController < ApplicationController
   def find_item
     @item = Item.find(params[:item_id])
   end
-
 end
