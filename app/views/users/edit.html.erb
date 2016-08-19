@@ -24,5 +24,7 @@
     </div>
     <button>Salvar alterações</button>
     <% end %>
+
+    <%= link_to "Destroy", admin_destroy_user_path(user), method: :delete, data: { confirm: "You sure?" } %>
    </div>
 </div>

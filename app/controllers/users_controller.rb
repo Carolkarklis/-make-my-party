@@ -15,7 +15,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to destroy_user_session_path, alert: 'Perfil Apagado!'#mudar para My_itens
   end
+
 
   private
 

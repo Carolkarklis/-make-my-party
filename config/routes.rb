@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   delete '/items/:id', to: "items#destroy", as: 'delete_item'
   get '/items/:id/edit', to: "items#edit", as: 'edit_item'
   patch '/items/:id', to: "items#update"
-
+  match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
 
   # delete '/doses/:id', to: "doses#destroy", as: 'delete_dose'
 
