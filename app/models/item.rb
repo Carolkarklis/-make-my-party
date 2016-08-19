@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :reviews
   has_many :rents
-  validates :picture, :price, :product_name, presence: true
+  validates :picture, :price, :product_name, :address, presence: true
 
   def self.search(search)
     where("product_name ILIKE ?", "%#{search}%")
