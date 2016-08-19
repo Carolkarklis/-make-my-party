@@ -16,9 +16,10 @@ Rails.application.routes.draw do
   delete '/items/:id', to: "items#destroy", as: 'delete_item'
   get '/items/:id/edit', to: "items#edit", as: 'edit_item'
   patch '/items/:id', to: "items#update"
-  resources :users, only: [:show, :edit, :update, :destroy]
 
-  # match '/item_search/index', :to => 'item_search#index', as: 'item_search', via => 'GET'
+  resources :users, only: [:show, :edit, :update]
+  match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
+
 
   root to: "items#index"
 
