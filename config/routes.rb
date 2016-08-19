@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  get 'users/show'
 
+  get "pages/home"
+  root to: "pages#home"
+
+  get 'users/show'
   get 'users/edit'
 
   devise_for :users, :controllers => {  registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
@@ -20,13 +23,4 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
 
-
-  root to: "items#index"
-
-
-
-  # root to: 'pages#home'
-  # root to: "home#index"
-
-  resources :items
 end

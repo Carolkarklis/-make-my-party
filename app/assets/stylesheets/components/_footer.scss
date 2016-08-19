@@ -1,11 +1,12 @@
+  @import 'https://fonts.googleapis.com/css?family=Lobster';
   .footer-distributed {
-    background-color:#292c2f;
+    background-color: #2D1A47;
     box-shadow:0 1px 1px 0 rgba(0,0,0,0.12);
     box-sizing:border-box;
     width:100%;
+    margin-bottom: 0px;
     text-align:left;
     font:bold 16px sans-serif;
-    bottom:0;
     padding:55px 50px;
     margin-top:80px
   }
@@ -18,12 +19,6 @@
   .footer-distributed .footer-left {
     width:40%
   }
-
-    .footer-distributed h3 {
-      color:#ffffff;
-      font:normal 36px 'Cookie', cursive;
-      margin:0
-    }
 
     .footer-distributed h3 span {
       color:#62CDFF
@@ -119,7 +114,7 @@
       width:35px;
       height:35px;
       cursor:pointer;
-      background-color:#33383b;
+      background-color:#22C9BE;
       border-radius:2px;
       font-size:20px;
       color:#ffffff;
@@ -147,3 +142,9 @@
     }
 
   }
+
+footer h3 {
+  font-family: 'Lobster', cursive;
+  color: white;
+  font-size: 40px;
+}
