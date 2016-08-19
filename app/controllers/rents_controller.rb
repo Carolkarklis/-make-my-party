@@ -22,15 +22,9 @@ class RentsController < ApplicationController
     if @rent.save
       redirect_to rent_path(@rent)
     else
-      redirect_to item_path(@item), error: 'Erro ao reservar'
+      redirect_to item_path(@item), alert: 'Item não disponível nesta data!'
     end
   end
-
-  def quantity_of_items
-    @rent.quantity >= @rent.item.quantity
-    errors.add_to_base "Não é possível reservar mais do que #{@rent.item.quantity} itens."
-  end
-
 
   def show
     @rent = Rent.find(params[:id])
@@ -42,7 +36,7 @@ class RentsController < ApplicationController
   private
 
   def rent_params
-    params.require(:rent).permit(:description, :item_id, :user_id, :end_date, :initial_date, :quantity)
+    params.require(:rent).permit(:description, :item_id, :user_id, :end_date, :initial_date)
   end
 
   def find_item
