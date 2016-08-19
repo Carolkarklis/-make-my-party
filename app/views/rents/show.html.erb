@@ -29,7 +29,6 @@
           <p>
             <b>Informações sobre o item alugado: <br></b><%= @item.description %>
           </p>
-          <p> <b> Quantidade:</b> <br> <%= @rent.quantity %> </p>
           <p> <b> Valor a pagar: </b> <br><%= @rent.item.price * (@rent.end_date - @rent.initial_date) %> </p>
           <p> <b> Data de início: </b> <br><%= @rent.initial_date %> </p>
           <p> <b> Data de devolução: </b> <br><%= @rent.end_date %> </p>

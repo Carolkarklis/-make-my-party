@@ -1,4 +1,37 @@
+
+
 <h2> Meus items alugados</h2>
-<% @rents.each do |rent| %>
-<h4> <p><%= rent.item.product_name %> </p></h4>
+
+
+<% if @rents.size == 0  %>
+  <h3> Você ainda não tem itens alugados. </h3>
+  <button> <%= link_to 'VOLTAR', items_path  %> </button>
 <% end %>
+
+
+<div class="container-fluid text-center">
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="row">
+      <% @rents.each do |rent| %>
+        <div class="col-lg-4 col-md-4 col-xs-12">
+          <div class="card text-center">
+              <%= "#" %>
+              <h2 class=""><%= rent.item.product_name %></h2>
+              <p><%= rent.item.price %> reais por dia</p>
+              <div class="cta-container">
+                <a href="#" class="cta">Detalhes</a>
+              </div>
+          </div>
+        </div>
+      <% end %>
+  </div>
+  <br>
+  <br>
+  <br>
+</div>
+
+
+

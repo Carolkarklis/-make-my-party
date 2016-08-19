@@ -20,18 +20,19 @@
                 <i class="fa fa-user"></i> <%= t(".profile", default:  current_user.email ) %>
               <% end %>
             </li>
+            </li>
             <li>
               <%= link_to new_item_path do %>
                 <i class="fa fa-plus-circle"></i>  <%= t(".profile", default: "Adicionar item") %>
               <% end %>
             </li>
             <li>
-              <%= link_to items_path(filter: 'mine') do %>
+              <%= link_to users_show_path(filter: 'mine') do %>
                 <i class="fa fa-diamond"></i>  <%= t(".profile", default: "Meus itens") %>
               <% end %>
             </li>
             <li>
-              <%= link_to rents_path(filter: 'mine') do %>
+              <%= link_to users_show_path(filter: 'mine') do %>
               <i class="fa fa-shopping-basket"></i>  <%= t(".profile", default: "Minhas Locações") %>
               <% end %>
             </li>

@@ -7,12 +7,11 @@ class RentsController < ApplicationController
 
   def index
     @rents = Rent.all
-    @rents = @rents.where(user: current_user) if params[:filter] == 'mine'
+    @rents = @rents.where(user: current_user) if params[:filter] == 'mine' # cria um filtro "mine"
   end
 
   def new
     @rent = Rent.new
-    if
     @rent.item = @item
     @rent.user = current_user
   end
@@ -23,13 +22,7 @@ class RentsController < ApplicationController
     if @rent.save
       redirect_to rent_path(@rent)
     else
-      render :new
-    end
-  end
-
-  def quantity_of_items
-    if new_rent? && @rent.quantity >= @rent.item.quantity
-        errors.add_to_base "Não é possível reservar mais do que #{@rent.item.quantity} itens."
+      redirect_to item_path(@item), alert: 'Item não disponível nesta data!'
     end
   end
 
@@ -40,16 +33,14 @@ class RentsController < ApplicationController
     @owner = @item.user
   end
 
-
   private
 
   def rent_params
-    params.require(:rent).permit(:description, :item_id, :user_id, :end_date, :initial_date, :quantity)
+    params.require(:rent).permit(:description, :item_id, :user_id, :end_date, :initial_date)
   end
 
-   def find_item
+  def find_item
     @item = Item.find(params[:item_id])
-    end
+  end
 
 end
-

@@ -5,23 +5,28 @@
         <br>
         <br>
         <br>
-        <%= image_tag @item.picture.url, class: "swipebox show-photo" %>
-      </div>
+        <%= image_tag @item.picture.url, class: "show-photo", "data-toggle" => "modal" , "data-target" => "#myModal" %>
+        <small> <i style="color:grey;">Clique na foto para ver em alta resolução </i></small>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <%= image_tag @item.picture.url %>
+          </div>
+        </div>
+        </div>
       <div class="col-xs-12 col-sm-6 col-lg-6">
         <div class="form-mmp">
-        <h2>Reserve agora!</h2>
-        <%= simple_form_for [@item, @rent] do |f| %>
-        <%= f.input :quantity, label: 'Quantidade' %>
-        <%= f.input :initial_date, as: :string, required: false,
-        :placeholder => 'Select date', input_html: {class: "form-control datepicker"},
-        label: "Data de inicio " %>
-        <%= f.input :end_date, as: :string, required: false,
-        :placeholder => 'Select date', input_html: {class: "form-control datepicker"},
-        label: "Data de devolução " %>
-        <button type="submit">RESERVAR</button>
-      <% end %>
+          <h2>Reserve agora!</h2>
+          <%= simple_form_for [@item, @rent] do |f| %>
+          <%= f.input :initial_date, as: :string, required: false,
+          :placeholder => 'Select date', input_html: {class: "form-control datepicker"},
+          label: "Data de inicio " %>
+          <%= f.input :end_date, as: :string, required: false,
+          :placeholder => 'Select date', input_html: {class: "form-control datepicker"},
+          label: "Data de devolução " %>
+          <button type="submit">RESERVAR</button>
+        <% end %>
       </div>
-      </div>
+    </div>
 
       <div class="col-xs-12 col-sm-6 col-lg-6">
         <h1 class="product-name"><%= @item.product_name %></h1>
@@ -29,23 +34,15 @@
           <p>
             <b>Informações sobre o item: <br></b><%= @item.description %>
           </p>
-          <p> <b> Quantidade:</b> <br> <%= @item.quantity %> </p>
           <p> <b> Categoria: </b> <br><%= @item.category %> </p>
         </div>
       </div>
     </div>
   </div>
-
   <div id="calendar" class="fullcalendar"></div>
-
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
     <button> <%= link_to 'AVALIE', new_item_review_path(@item)  %> </button>
-
-      <button> <%= link_to 'BACK', items_path  %> </button>
-
-
-
       </div>
   </div>
 
@@ -56,13 +53,57 @@
  </h3>
 
         <% @item.reviews.each do |review| %>
+          <div class="row">
+            <hr>
+            <div class="form-mmp">
+            <div class="col-xs-12">
+
+          </div>
+          <div class="col-xs-12">
+            <div class="form-mmp-field">
+              <%= image_tag review.user.picture, class: 'avatar-comment' %>
+              <p> <b><%= "#{review.user.firstname}"%> </b></p>
+              <p> "<%= "#{review.description}"%>" </p>
+            </div>
+          </div>
+          </div>
           <hr>
-          <p> <b><%= "#{review.user.firstname}"%> </b></p>
-          <p> <%= "#{review.description}"%> </p>
-          <hr>
+          </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $('#calendar').fullCalendar({
+        events: <%= raw @events.to_json %>
+      });
+    });
+
+  <% end %>
+<% end %>
+
+<div id="map" style="width: 100%; height: 600px;"></div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
+
 
