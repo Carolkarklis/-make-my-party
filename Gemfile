@@ -26,6 +26,7 @@ gem 'geocoder'
 gem 'coffee-rails'
 gem 'gmaps4rails'
 gem 'validates_overlap'
+gem 'postmark-rails'
 
 source "https://rails-assets.org" do
   gem 'rails-assets-bootstrap-datepicker'
