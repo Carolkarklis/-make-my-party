@@ -1,12 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
+  protected
 
-  private
-
-  def sign_up_params
-    params.require(:user).permit(:firstname, :lastname, :address, :phone, :email, :password, :password_confirmation)
-  end
-
-  def account_update_params
-    params.require(:user).permit(:firstname, :lastname, :address, :phone, :email, :password, :password_confirmation, :current_password)
+  def after_sign_up_path_for(resource)
+    items_path # Or :prefix_to_your_route
   end
 end

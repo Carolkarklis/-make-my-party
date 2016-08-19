@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'users/edit'
 
-  devise_for :users, :controllers => {  registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
-
+  devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :items, only: [ :index, :show, :new, :create, :search ] do
     resources :rents, only: [:new, :create, :destroy, :index]
     resources :reviews, only: [:new, :create, :destroy]
