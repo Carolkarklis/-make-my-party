@@ -5,22 +5,27 @@
   <h2> <%= @title %> </h2>
   <br>
   <br>
-  <%= form_tag(items_path, :method => "get", id: "search-form") do %>
-    <h3>Procurando alguma coisa?</h3>
-    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-    <%= text_field_tag :search, params[:search], placeholder: "Digite o item" %>
-    <%= submit_tag "Procurar" %>
-  <% end %>
-  <br>
-  <%= form_tag items_path, method: :get do %>
-    <%= label :location, "Procure Items perto de: " %>
-    <%= text_field_tag :location, params[:location] %>
+  <div class="form-mmp">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <%= form_tag(items_path, :method => "get", id: "search-form") do %>
+        <h3> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Procurando alguma coisa?</h3>
+        <%= text_field_tag :search, params[:search], placeholder: "Digite o item",  class: 'form-mmp-field' %>
+      <% end %>
+      <br>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <%= form_tag items_path, method: :get do %>
 
-    <%= label :distance, "Distância : " %>
-    <%= text_field_tag :distance, params[:distance] %>
+        <%= text_field_tag :location, params[:location], placeholder: "Itens perto de...", class: "form-mmp-field" %>
+        <br>
+        <%= text_field_tag :distance, params[:distance], placeholder: "Distância em km", class: "form-mmp-field" %>
+        <button>PROCURAR</button>
+      <% end %>
+    </div>
+  </div>
 
-    <%= submit_tag "Search" %>
-  <% end %>
+  </div>
   <br>
   <br>
   <% if @items.present? %>
